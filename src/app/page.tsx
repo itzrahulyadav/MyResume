@@ -88,7 +88,7 @@ export default function HomePage() {
                 {words[currentWordIndex]}
               </span>
               <br />
-              systems engineer.
+              software engineer.
             </h1>
             <p className="max-w-3xl mx-auto text-lg md:text-xl text-muted-foreground mb-8 animate-fade-in-up animation-delay-300">
               Evolving my craft from DevOps and cloud architecture into the broader discipline of building resilient, scalable systems.

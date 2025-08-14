@@ -3,9 +3,12 @@ import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Rahul Yadav | Systems Engineer",
+  title: "Rahul Yadav | Software Engineer",
   description:
-    "Portfolio of Rahul Yadav, a Systems Engineer specializing in DevOps, cloud architecture, and resilient systems.",
+    "Portfolio of Rahul Yadav, a Software Engineer specializing in DevOps, cloud architecture, and resilient systems.",
+  icons: {
+    icon: "/logo.svg",
+  },
 };
 
 export default function RootLayout({

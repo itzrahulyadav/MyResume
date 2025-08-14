@@ -1,0 +1,8 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background: A dark, rounded square matching your site's theme -->
+  <rect width="32" height="32" rx="6" fill="#090909"/>
+  
+  <!-- The initial 'R' stylized with a triangle, representing clarity and building -->
+  <path d="M11 23V9H18.5C20.9853 9 23 11.0147 23 13.5C23 15.9853 20.9853 18 18.5 18H14.5L11 23Z" fill="white"/>
+  <path d="M14.5 18L20 23H15.5L11 18H14.5Z" fill="white"/>
+</svg>
