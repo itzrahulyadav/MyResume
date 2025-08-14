@@ -78,11 +78,11 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="bg-background text-foreground min-h-screen">
+    <div className="bg-background text-foreground min-h-screen overflow-x-hidden">
       <main className="container mx-auto px-4 md:px-6">
         {/* Hero Section */}
         <section className="min-h-screen flex flex-col justify-center text-center">
-            <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-4">
+            <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-4 animate-fade-in-up">
               Not your{' '}
               <span className="relative inline-block text-primary transition-all duration-300">
                 {words[currentWordIndex]}
@@ -90,10 +90,10 @@ export default function HomePage() {
               <br />
               systems engineer.
             </h1>
-            <p className="max-w-3xl mx-auto text-lg md:text-xl text-muted-foreground mb-8">
+            <p className="max-w-3xl mx-auto text-lg md:text-xl text-muted-foreground mb-8 animate-fade-in-up animation-delay-300">
               Evolving my craft from DevOps and cloud architecture into the broader discipline of building resilient, scalable systems.
             </p>
-            <div className="flex justify-center gap-4">
+            <div className="flex justify-center gap-4 animate-fade-in-up animation-delay-600">
               <Button asChild size="lg">
                   <a href="#projects">View Projects</a>
               </Button>
@@ -105,7 +105,7 @@ export default function HomePage() {
 
         {/* About Section */}
         <section id="about" className="py-20 lg:py-32">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
               <h2 className="font-headline text-3xl md:text-4xl font-bold mb-4">About Me</h2>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                   I’m a DevOps engineer who loves untangling tricky Kubernetes problems and making stubborn networking issues behave. I enjoy designing scalable, resilient systems with the help of AWS, Azure, GCP, and a good dose of distributed systems know-how. I mix serverless tech with Go to build fast, concurrent apps — crafting solutions that are as reliable as they are efficient.
@@ -116,13 +116,13 @@ export default function HomePage() {
         {/* Skills Section */}
         <section id="skills" className="py-20 lg:py-32">
           <div className="max-w-5xl mx-auto text-center">
-              <h2 className="font-headline text-3xl md:text-4xl font-bold mb-4">Technologies I Work With</h2>
-              <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
+              <h2 className="font-headline text-3xl md:text-4xl font-bold mb-4 animate-fade-in-up">Technologies I Work With</h2>
+              <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
                 The tools and technologies I use to architect and build robust solutions.
               </p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                {skills.map((skill) => (
-                  <Card key={skill.name} className="bg-card/50 border-border hover:border-primary transition-colors duration-300 flex flex-col items-center justify-center p-6">
+                {skills.map((skill, i) => (
+                  <Card key={skill.name} className="bg-card/50 border-border hover:border-primary transition-colors duration-300 flex flex-col items-center justify-center p-6 animate-fade-in-up" style={{animationDelay: `${i * 100 + 300}ms`}}>
                       <CardContent className="p-0 flex flex-col items-center justify-center gap-4">
                           {skill.icon}
                           <p className="font-semibold text-center">{skill.name}</p>
@@ -136,13 +136,13 @@ export default function HomePage() {
         {/* Projects Section */}
         <section id="projects" className="py-20 lg:py-32">
             <div className="max-w-7xl mx-auto text-center">
-                <h2 className="font-headline text-3xl md:text-4xl font-bold mb-4">My Projects</h2>
-                <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
+                <h2 className="font-headline text-3xl md:text-4xl font-bold mb-4 animate-fade-in-up">My Projects</h2>
+                <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
                     A selection of projects where I've engineered solutions to challenging problems.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-                    {projects.map((project) => (
-                        <a href={project.link} key={project.title} target="_blank" rel="noopener noreferrer" className="group block">
+                    {projects.map((project, i) => (
+                        <a href={project.link} key={project.title} target="_blank" rel="noopener noreferrer" className="group block animate-fade-in-up" style={{animationDelay: `${i * 150 + 300}ms`}}>
                             <Card className="h-full flex flex-col bg-card/50 border-border hover:border-primary hover:-translate-y-1 transition-all duration-300">
                                 <CardHeader>
                                     <div className="flex justify-between items-start">
@@ -167,7 +167,7 @@ export default function HomePage() {
 
         {/* Connect Section */}
         <footer id="connect" className="py-20 lg:py-32 border-t border-border">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
             <h2 className="font-headline text-3xl md:text-4xl font-bold mb-4">Ready to Connect?</h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Let's build something awesome together. Reach out via email or connect with me on social media.
@@ -186,3 +186,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+    
