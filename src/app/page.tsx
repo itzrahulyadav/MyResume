@@ -18,14 +18,12 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-// LeetCode Icon (unchanged)
 const LeetCodeIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
     <path d="M13.483 0a1.374 1.374 0 0 0-.961.406L.648 12.269a1.374 1.374 0 0 0 0 1.943l11.874 11.868a1.374 1.374 0 0 0 1.943 0l11.874-11.868a1.374 1.374 0 0 0 0-1.943L14.444.406a1.374 1.374 0 0 0-.961-.406zM18.42 15.355h-1.637v-1.228h-3.834v1.228h-1.637V8.645h1.637v1.228h3.834V8.645h1.637v6.71zm-5.471-2.035v-1.228h-3.834v1.228h3.834z"></path>
   </svg>
 );
 
-// ✨ NEW: Reusable Animated Border Wrapper Component
 const AnimatedBorderWrapper = ({
   children,
   className,
@@ -62,7 +60,6 @@ export default function HomePage() {
     return () => clearInterval(interval);
   }, [words.length]);
 
-  // Data (skills, projects, socials) remains unchanged...
   const skills = [
     { name: "AWS", icon: <Cloud className="h-8 w-8 text-blue-400" /> },
     { name: "GCP", icon: <Server className="h-8 w-8 text-blue-400" /> },
@@ -104,14 +101,14 @@ export default function HomePage() {
   return (
     <div className="bg-black text-white min-h-screen overflow-x-hidden">
       {/* Hero Section with Border */}
-      <section className="min-h-screen relative flex flex-col justify-center text-center p-4">
+      {/* ✨ UPDATED THIS LINE FOR RESPONSIVENESS */}
+      <section className="min-h-screen relative flex flex-col justify-center items-center text-center p-4 md:p-0">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-blue-900 opacity-90"></div>
-        {/* ✨ REPLACED BORDER DIV WITH WRAPPER */}
         <AnimatedBorderWrapper
-          className="relative z-10 mx-auto max-w-4xl"
+          className="relative z-10 w-full max-w-4xl"
           innerClassName="bg-black/80 backdrop-blur-sm p-6"
         >
-          <h1 className="font-bold text-5xl md:text-7xl lg:text-8xl tracking-tighter mb-4 animate-fade-in-up">
+          <h1 className="font-bold text-4xl md:text-7xl lg:text-8xl tracking-tighter mb-4 animate-fade-in-up">
             Not just{" "}
             <span
               className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 transition-all duration-300"
@@ -121,15 +118,15 @@ export default function HomePage() {
             <br />
             software engineer.
           </h1>
-          <p className="max-w-3xl mx-auto text-lg md:text-xl text-gray-300 mb-8 animate-fade-in-up animation-delay-300">
+          <p className="max-w-3xl mx-auto text-base md:text-xl text-gray-300 mb-8 animate-fade-in-up animation-delay-300">
             Evolving my craft from DevOps and cloud architecture into the broader discipline of building resilient,
             scalable systems.
           </p>
-          <div className="flex justify-center gap-4 animate-fade-in-up animation-delay-600">
-            <Button asChild size="lg" className="bg-gray-800 hover:bg-gray-700 text-white border border-blue-500">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 animate-fade-in-up animation-delay-600">
+            <Button asChild size="lg" className="bg-gray-800 hover:bg-gray-700 text-white border border-blue-500 w-full sm:w-auto">
               <a href="#projects">View Projects</a>
             </Button>
-            <Button asChild variant="outline" size="lg" className="border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white">
+            <Button asChild variant="outline" size="lg" className="border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white w-full sm:w-auto">
               <a href="#connect">Get In Touch</a>
             </Button>
           </div>
@@ -138,7 +135,6 @@ export default function HomePage() {
 
       {/* About Section */}
       <section id="about" className="py-20 lg:py-32 bg-gray-900 p-4">
-         {/* ✨ REPLACED BORDER DIV WITH WRAPPER */}
         <AnimatedBorderWrapper
           className="max-w-4xl mx-auto animate-fade-in-up"
           innerClassName="bg-gray-900 p-6 text-center"
@@ -158,7 +154,6 @@ export default function HomePage() {
 
       {/* Skills Section */}
       <section id="skills" className="py-20 lg:py-32 bg-black p-4">
-        {/* ✨ REPLACED BORDER DIV WITH WRAPPER */}
         <AnimatedBorderWrapper
           className="max-w-5xl mx-auto"
           innerClassName="bg-black p-6 text-center"
@@ -189,7 +184,6 @@ export default function HomePage() {
 
       {/* Projects Section */}
       <section id="projects" className="py-20 lg:py-32 bg-gray-900 p-4">
-        {/* ✨ REPLACED BORDER DIV WITH WRAPPER */}
         <AnimatedBorderWrapper
           className="max-w-7xl mx-auto"
           innerClassName="bg-gray-900 p-6 text-center"
@@ -235,7 +229,6 @@ export default function HomePage() {
 
       {/* Connect Section */}
       <footer id="connect" className="py-20 lg:py-32 border-t border-gray-700 bg-black p-4">
-        {/* ✨ REPLACED BORDER DIV WITH WRAPPER */}
         <AnimatedBorderWrapper
           className="max-w-4xl mx-auto animate-fade-in-up"
           innerClassName="bg-black p-6 text-center"
