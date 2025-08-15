@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import type { SVGProps } from "react";
+import type { SVGProps, ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -17,11 +17,40 @@ import {
   Instagram,
   ArrowRight,
 } from "lucide-react";
+
+// LeetCode Icon (unchanged)
 const LeetCodeIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
     <path d="M13.483 0a1.374 1.374 0 0 0-.961.406L.648 12.269a1.374 1.374 0 0 0 0 1.943l11.874 11.868a1.374 1.374 0 0 0 1.943 0l11.874-11.868a1.374 1.374 0 0 0 0-1.943L14.444.406a1.374 1.374 0 0 0-.961-.406zM18.42 15.355h-1.637v-1.228h-3.834v1.228h-1.637V8.645h1.637v1.228h3.834V8.645h1.637v6.71zm-5.471-2.035v-1.228h-3.834v1.228h3.834z"></path>
   </svg>
 );
+
+// ✨ NEW: Reusable Animated Border Wrapper Component
+const AnimatedBorderWrapper = ({
+  children,
+  className,
+  innerClassName,
+}: {
+  children: ReactNode;
+  className?: string;
+  innerClassName?: string;
+}) => {
+  return (
+    <div
+      className={`
+        relative rounded-lg p-[2px]
+        bg-[conic-gradient(from_var(--angle),theme(colors.slate.900),theme(colors.sky.400)_20%,theme(colors.slate.900)_35%)]
+        animate-rotate
+        ${className}
+      `}
+    >
+      <div className={`rounded-[6px] w-full h-full ${innerClassName}`}>
+        {children}
+      </div>
+    </div>
+  );
+};
+
 
 export default function HomePage() {
   const words = ["average", "basic", "normal", "mediocre", "ordinary", "amateur", "so-so", "common"];
@@ -33,6 +62,7 @@ export default function HomePage() {
     return () => clearInterval(interval);
   }, [words.length]);
 
+  // Data (skills, projects, socials) remains unchanged...
   const skills = [
     { name: "AWS", icon: <Cloud className="h-8 w-8 text-blue-400" /> },
     { name: "GCP", icon: <Server className="h-8 w-8 text-blue-400" /> },
@@ -74,9 +104,13 @@ export default function HomePage() {
   return (
     <div className="bg-black text-white min-h-screen overflow-x-hidden">
       {/* Hero Section with Border */}
-      <section className="min-h-screen relative flex flex-col justify-center text-center">
+      <section className="min-h-screen relative flex flex-col justify-center text-center p-4">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-blue-900 opacity-90"></div>
-        <div className="relative z-10 p-6 border-4 border-blue-500 rounded-lg mx-auto max-w-4xl">
+        {/* ✨ REPLACED BORDER DIV WITH WRAPPER */}
+        <AnimatedBorderWrapper
+          className="relative z-10 mx-auto max-w-4xl"
+          innerClassName="bg-black/80 backdrop-blur-sm p-6"
+        >
           <h1 className="font-bold text-5xl md:text-7xl lg:text-8xl tracking-tighter mb-4 animate-fade-in-up">
             Not your{" "}
             <span
@@ -99,12 +133,16 @@ export default function HomePage() {
               <a href="#connect">Get In Touch</a>
             </Button>
           </div>
-        </div>
+        </AnimatedBorderWrapper>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 lg:py-32 bg-gray-900">
-        <div className="max-w-4xl mx-auto text-center animate-fade-in-up p-6 border-4 border-blue-500 rounded-lg">
+      <section id="about" className="py-20 lg:py-32 bg-gray-900 p-4">
+         {/* ✨ REPLACED BORDER DIV WITH WRAPPER */}
+        <AnimatedBorderWrapper
+          className="max-w-4xl mx-auto animate-fade-in-up"
+          innerClassName="bg-gray-900 p-6 text-center"
+        >
           <h2 className="font-bold text-3xl md:text-4xl mb-4">About Me</h2>
           <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
             I’m a DevOps engineer who loves untangling tricky Kubernetes problems and making stubborn networking issues
@@ -115,12 +153,16 @@ export default function HomePage() {
           <Button className="mt-6 bg-gray-800 hover:bg-gray-700 text-white border border-blue-500" size="lg">
             Learn More
           </Button>
-        </div>
+        </AnimatedBorderWrapper>
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 lg:py-32 bg-black">
-        <div className="max-w-5xl mx-auto text-center p-6 border-4 border-blue-500 rounded-lg">
+      <section id="skills" className="py-20 lg:py-32 bg-black p-4">
+        {/* ✨ REPLACED BORDER DIV WITH WRAPPER */}
+        <AnimatedBorderWrapper
+          className="max-w-5xl mx-auto"
+          innerClassName="bg-black p-6 text-center"
+        >
           <h2 className="font-bold text-3xl md:text-4xl mb-4 animate-fade-in-up">Technologies I Work With</h2>
           <p className="text-lg text-gray-300 mb-12 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
             The tools and technologies I use to architect and build robust solutions.
@@ -142,12 +184,16 @@ export default function HomePage() {
           <Button className="mt-6 bg-gray-800 hover:bg-gray-700 text-white border border-blue-500" size="lg">
             Try Now
           </Button>
-        </div>
+        </AnimatedBorderWrapper>
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 lg:py-32 bg-gray-900">
-        <div className="max-w-7xl mx-auto text-center p-6 border-4 border-blue-500 rounded-lg">
+      <section id="projects" className="py-20 lg:py-32 bg-gray-900 p-4">
+        {/* ✨ REPLACED BORDER DIV WITH WRAPPER */}
+        <AnimatedBorderWrapper
+          className="max-w-7xl mx-auto"
+          innerClassName="bg-gray-900 p-6 text-center"
+        >
           <h2 className="font-bold text-3xl md:text-4xl mb-4 animate-fade-in-up">My Projects</h2>
           <p className="text-lg text-gray-300 mb-12 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
             A selection of projects where I've engineered solutions to challenging problems.
@@ -184,12 +230,16 @@ export default function HomePage() {
           <Button className="mt-6 bg-gray-800 hover:bg-gray-700 text-white border border-blue-500" size="lg">
             View All
           </Button>
-        </div>
+        </AnimatedBorderWrapper>
       </section>
 
       {/* Connect Section */}
-      <footer id="connect" className="py-20 lg:py-32 border-t border-gray-700 bg-black">
-        <div className="max-w-4xl mx-auto text-center animate-fade-in-up p-6 border-4 border-blue-500 rounded-lg">
+      <footer id="connect" className="py-20 lg:py-32 border-t border-gray-700 bg-black p-4">
+        {/* ✨ REPLACED BORDER DIV WITH WRAPPER */}
+        <AnimatedBorderWrapper
+          className="max-w-4xl mx-auto animate-fade-in-up"
+          innerClassName="bg-black p-6 text-center"
+        >
           <h2 className="font-bold text-3xl md:text-4xl mb-4">Ready to Connect?</h2>
           <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
             Let's build something awesome together. Reach out via email or connect with me on social media.
@@ -209,7 +259,7 @@ export default function HomePage() {
             ))}
           </div>
           <p className="text-sm text-gray-500 mt-12">© {new Date().getFullYear()} Rahul Yadav. All Rights Reserved.</p>
-        </div>
+        </AnimatedBorderWrapper>
       </footer>
     </div>
   );
