@@ -53,7 +53,7 @@ const AnimatedBorderWrapper = ({
 
 
 export default function HomePage() {
-  const words = ["average", "basic", "normal", "mediocre", "ordinary", "amateur", "so-so", "common"];
+  const words = ["another"];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   useEffect(() => {
     const interval = setInterval(() => {
@@ -112,7 +112,7 @@ export default function HomePage() {
           innerClassName="bg-black/80 backdrop-blur-sm p-6"
         >
           <h1 className="font-bold text-5xl md:text-7xl lg:text-8xl tracking-tighter mb-4 animate-fade-in-up">
-            Not your{" "}
+            Not just{" "}
             <span
               className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 transition-all duration-300"
             >
@@ -258,7 +258,7 @@ export default function HomePage() {
               </a>
             ))}
           </div>
-          <p className="text-sm text-gray-500 mt-12">© {new Date().getFullYear()} Rahul Yadav. All Rights Reserved.</p>
+          <p className="text-sm text-gray-500 mt-12">Running in AWS</p>
         </AnimatedBorderWrapper>
       </footer>
     </div>
