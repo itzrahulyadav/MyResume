@@ -29,21 +29,10 @@ jobs:
       - name: Configure Docker for Artifact Registry
         run: gcloud auth configure-docker asia-south1-docker.pkg.dev
 
-      - name: Create repository if it doesn't exist
-        run: |
-          gcloud artifacts repositories describe my-repository \
-            --location=asia-south1 \
-            --project=${{ secrets.GCP_PROJECT_ID }} || \
-          gcloud artifacts repositories create my-repository \
-            --repository-format=docker \
-            --location=asia-south1 \
-            --project=${{ secrets.GCP_PROJECT_ID }} \
-            --description="My Docker repository"
-
       - name: Build and push Docker image
         run: |
-          docker build -t asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/my-repository:${{ github.sha }} .
-          docker push asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/my-repository:${{ github.sha }}
+          docker build -t asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/my-repository/myresume:${{ github.sha }} .
+          docker push asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/my-repository/myresume:${{ github.sha }}
         env:
           DOCKER_BUILDKIT: 1
 
